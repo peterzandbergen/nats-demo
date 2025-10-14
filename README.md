@@ -10,8 +10,8 @@ export NATS_URL=nats://nats-server:4222
 
 ## Create a stream
 
-* The stream must persist events on the topic events.>
 * The name of the stream is EVENTS
+* The stream must persist events on the topic events.>
 * storage in memory
 
 ```bash
@@ -21,7 +21,9 @@ nats stream add EVENTS \
     --defaults
 ```
 
-## Publish some message
+## Publish some messages
+
+Publish some messages on different subjects, that all should be backed by the stream.
 
 ```bash
 nats publish "events.customer-arrived" "He's here"
