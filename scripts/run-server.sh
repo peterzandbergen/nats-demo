@@ -9,6 +9,6 @@ docker network create $NETWORK
 docker run --rm -it --detach \
     --network nats-network  \
     --name $SERVER \
-    nats:linux --jetstream
+    docker.io/nats:linux --jetstream
 
 docker logs --follow $SERVER

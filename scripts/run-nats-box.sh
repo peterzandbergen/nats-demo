@@ -8,5 +8,5 @@ docker run --rm -it --network nats-network \
     --env-file $WDIR/box-settings.env \
     --user $(id -u):$(id -g) \
     --mount type=bind,source=$(readlink -f $WDIR/nats-commands),destination=/commands \
-    natsio/nats-box
+    docker.io/natsio/nats-box
 
