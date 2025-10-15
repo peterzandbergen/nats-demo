@@ -1,12 +1,12 @@
 #!/bin/bash
 
 WDIR=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
-
 source $WDIR/settings.env
 
-ARG=${1:- sh}
-
+# Run the nats box with the commands dir mounted
 docker run --rm -it --network nats-network \
-    --env NATS_URL=$SERVER:4222 \
-    natsio/nats-box $ARG
+    --env-file $WDIR/box-settings.env \
+    --user $(id -u):$(id -g) \
+    --mount type=bind,source=$(readlink -f $WDIR/nats-commands),destination=/commands \
+    natsio/nats-box
 
